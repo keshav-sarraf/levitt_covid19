@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>a new hope</title>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">a new hope</h1>
+        <p class="lead">This is a rudimentary model to predict rough estimates of when we can expect Covid19 cases in
+          India to reach lower levels. This model assumes that all efforts that are being undertaken by citizens
+          and the govenment would continue to remain same, any lapse in safety precautions could definitely lead to
+          escalation of the situation. Please note this is for mere demonstration purposes and there is no guarantee that
+          world would resume to pre Covid19 times as predicted by the model </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <input class="form-control basicAutoComplete" type="text" placeholder="India" autocomplete="on">
+
+      <canvas class="w-70 h-50 d-inline-block" id="casesChart" ></canvas>
+      <canvas class="w-70 h-50 d-inline-block" id="levittChart" ></canvas>
+
+      <div>
+
+        <p class="lead">We can try fitting a curve to the data to predict when the curve would hit the score of 1 </p>
+
+        <div class="d-flex justify-content-center my-4">
+
+          <p> Number of recent days to use for fitting the curve </p>
+          <input type="range" class="custom-range" id="daysRangePicker" min="30" max="100">
+          <span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
+
+        </div>
+        <button type="button" class="btn btn-primary btn-block" id="curvefitBtn">Predict</button>
+        <canvas class="w-70 h-50 d-inline-block" id="fittedCurveChart" ></canvas>
+
+        <h3>Estimated Number of days for pandemic to subside: </h3>
+        <h3 id="numDaysEstimated">-</h3>
+      </div>
+
+    </div>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.5/dist/latest/bootstrap-autocomplete.min.js"></script>
+    <script defer type=text/javascript src="{{url_for('static', filename='js/landing.js') }}"></script>
+  </body>
+</html>
