@@ -17,6 +17,10 @@
           and the govenment would continue to remain same, any lapse in safety precautions could definitely lead to
           escalation of the situation. Please note this is for mere demonstration purposes and there is no guarantee that
           world would resume to pre Covid19 times as predicted by the model </p>
+        <p class="lead"> Levitt Score is a very crude way of measuring the spread of pandemic, it is determined as a ratio
+          cumulative number of cases observed till today with respect to the cumulative number of cases till yesterday.
+          If there were no new additions yesterday, then the ratio would become 1. What this app does is it tries to predict
+          using simple linear regression that when can we expect this metric to reach 1.</p>
       </div>
     </div>
 
@@ -58,5 +62,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.5/dist/latest/bootstrap-autocomplete.min.js"></script>
     <script defer type=text/javascript src="{{url_for('static', filename='js/landing.js') }}"></script>
+
+    <div>
+      Credits:
+      Daily data is pulled from : https://github.com/covid19india/api
+    </div>
   </body>
 </html>
