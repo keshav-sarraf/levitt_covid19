@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
-from cache import LruCache
 from scipy import optimize
+import cachetools.func
 
 
 # TODO: add clear cache functionality
@@ -21,7 +21,8 @@ def get_national_ts():
 
     return df
 
-@LruCache(maxsize=1, timeout=3600)
+
+@cachetools.func.ttl_cache(maxsize=1, ttl=10 * 60 * 60)
 def get_state_ts():
     state_code_raw = requests.get("https://api.covid19india.org/state_district_wise.json")
     state_code = state_code_raw.json()
@@ -85,11 +86,12 @@ def get_filtered_location_ts(location_identifier):
         df = df.sort_values(by=['date'])
         print(df.tail())
     else:
-        raise(Exception("unknown location identifier"))
+        raise (Exception("unknown location identifier"))
 
     return df
 
-@LruCache(maxsize=100, timeout=3600)
+
+@cachetools.func.ttl_cache(maxsize=128, ttl=10 * 60 * 60)
 def get_location_list(query):
     df = get_state_ts()
     if query:
