@@ -91,7 +91,7 @@ def get_filtered_location_ts(location_identifier):
     return df
 
 
-@cachetools.func.ttl_cache(maxsize=128, ttl=10 * 60 * 60)
+@cachetools.func.ttl_cache(maxsize=128, ttl=15 * 60 * 60)
 def get_location_list(query):
     df = get_state_ts()
     if query:
