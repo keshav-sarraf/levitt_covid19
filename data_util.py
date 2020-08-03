@@ -100,7 +100,7 @@ def get_location_list(query):
     else:
         state_df = df[(df.type == 'state') & (df.state != None)]
     state_names = state_df.state.unique().tolist()
-    state_names = map(lambda x: "state - " + x, state_names)
+    state_names = list(map(lambda x: "state - " + x, state_names))
 
     if query:
         district_df = df[(df.type == 'district') &
@@ -110,7 +110,7 @@ def get_location_list(query):
     else:
         district_df = df[(df.type == 'district') & (df.state != None) & (df.district_name != None)]
     district_names = district_df.district_name.unique().tolist()
-    district_names = map(lambda x: "dist - " + x, district_names)
+    district_names = list(map(lambda x: "dist - " + x, district_names))
 
     return state_names + district_names + ['india']
 
