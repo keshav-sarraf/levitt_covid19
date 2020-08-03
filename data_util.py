@@ -158,7 +158,7 @@ def get_formatted_estimates(input_dict):
     df = input_dict['df']
     levitt_data = get_formatted_levitt_data(df)
     levitt_data['linear_fit'] = df['linear_fit'].values.tolist()
-    levitt_data['num_days_estimated'] = input_dict['num_days_estimated']
+    levitt_data['num_days_estimated'] = int(input_dict['num_days_estimated'])
     return levitt_data
 
 
