@@ -147,10 +147,10 @@ def add_levitt_score(df, metric='totalconfirmed'):
 
 
 def get_formatted_levitt_data(df):
-    df['date'] = df['date'].astype(str)
+    df['datestr'] = df['date'].astype(str)
     data = dict()
-    data['dates'] = df['date'].values.tolist()
-    data['levitt_score'] = df['levitt_score'].values.tolist()
+    data['dates'] = df['datestr'].values.tolist()
+    data['levitt_score'] = list(map(lambda x: float(x), df['levitt_score'].values.tolist()))
     return data
 
 
