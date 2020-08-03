@@ -53,10 +53,6 @@ def get_estimated_time(area, num_past_days):
     levitt_df = add_levitt_score(df)
     estimated_results = fit_linear_estimator(levitt_df, N_past_days=num_past_days)
     json = get_formatted_estimates(estimated_results)
-    print(json)
-    for key, val in json.items():
-        print("Key " + key + " type " + str(type(key)))
-        print("Val " + " type " + str(type(val)))
 
     return jsonify(json)
 

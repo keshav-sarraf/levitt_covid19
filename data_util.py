@@ -158,7 +158,7 @@ def get_formatted_estimates(input_dict):
     df = input_dict['df']
     levitt_data = get_formatted_levitt_data(df)
     levitt_data['linear_fit'] = df['linear_fit'].values.tolist()
-    levitt_data['num_days_estimated'] = int(input_dict['num_days_estimated'])
+    levitt_data['num_days_estimated'] = input_dict['num_days_estimated']
     return levitt_data
 
 
@@ -216,7 +216,7 @@ def fit_linear_estimator(ts, N_past_days=50):
     result = dict()
     result['df'] = ts
     if num_days_estimated:
-        result['num_days_estimated'] = max(num_days_estimated, 0)
+        result['num_days_estimated'] = int(max(num_days_estimated, 0))
     else:
-        result['num_days_estimated'] = num_days_estimated
+        result['num_days_estimated'] = None
     return result
