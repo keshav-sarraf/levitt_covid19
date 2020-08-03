@@ -196,14 +196,14 @@ def fit_linear_estimator(ts, N_past_days=50):
     (m, c), pcov = optimize.curve_fit(lnr_fn, train_ts.num_days_passed, train_ts.levitt_score, p0=(-1, 1))
 
     ts['linear_fit'] = lnr_fn(ts.num_days_passed, m, c)
-    print(m, c)
+    # print(m, c)
 
     total_num_days = find_soln(lnr_fn, m, c)
-    print(total_num_days)
+    # print(total_num_days)
     num_days_estimated = round(total_num_days) - last_day if total_num_days >= 0 else None
-    print(num_days_estimated)
+    # print(num_days_estimated)
 
     result = dict()
     result['df'] = ts
-    result['num_days_estimated'] = num_days_estimated
-    return result
+    result['num_days_estimated'] = min(num_days_estimated, 0)
+    # return result

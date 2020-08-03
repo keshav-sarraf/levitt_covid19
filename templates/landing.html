@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>a new hope</title>
+    <title>When will it end</title>
   </head>
   <body>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">a new hope</h1>
+        <h1 class="display-4">When will it all end</h1>
         <p class="lead">This is a rudimentary model to predict rough estimates of when we can expect Covid19 cases in
           India to reach lower levels. This model assumes that all efforts that are being undertaken by citizens
-          and the govenment would continue to remain same, any lapse in safety precautions could definitely lead to
+          and the government would continue to remain same, any lapse in safety precautions could definitely lead to
           escalation of the situation. Please note this is for mere demonstration purposes and there is no guarantee that
           world would resume to pre Covid19 times as predicted by the model </p>
         <p class="lead"> Levitt Score is a very crude way of measuring the spread of pandemic, it is determined as a ratio
@@ -48,6 +48,11 @@
         <h3 id="numDaysEstimated">-</h3>
       </div>
 
+      <div>
+        Credits:
+        Daily data is pulled from : <a href="https://github.com/covid19india/api">https://github.com/covid19india/api</a>>
+      </div>
+
     </div>
 
 
@@ -63,9 +68,6 @@
     <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.5/dist/latest/bootstrap-autocomplete.min.js"></script>
     <script defer type=text/javascript src="{{url_for('static', filename='js/landing.js') }}"></script>
 
-    <div>
-      Credits:
-      Daily data is pulled from : https://github.com/covid19india/api
-    </div>
+
   </body>
 </html>
