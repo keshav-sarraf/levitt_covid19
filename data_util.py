@@ -215,5 +215,6 @@ def fit_linear_estimator(ts, N_past_days=50):
 
     result = dict()
     result['df'] = ts
-    result['num_days_estimated'] = max(num_days_estimated, 0)
+    if num_days_estimated:
+        result['num_days_estimated'] = max(num_days_estimated, 0)
     return result
