@@ -19,7 +19,6 @@ def get_national_ts():
     df['totaldeceased'] = df['totaldeceased'].astype(int)
     df['totalrecovered'] = df['totalrecovered'].astype(int)
     df['date'] = pd.to_datetime(df['date'] + " 2020", format='%d %B %Y')
-
     return df
 
 
@@ -118,11 +117,17 @@ def get_location_list(query):
 
 def get_formatted_cases_data(df):
     df['date'] = df['date'].astype(str)
+
+    df['totalconfirmed'] = df['totalconfirmed'].fillna(0)
+    df['totaldeceased'] = df['totaldeceased'].fillna(0)
+    df['totalrecovered'] = df['totalrecovered'].fillna(0)
+
     data = dict()
     data['dates'] = df['date'].values.tolist()
     data['totalconfirmed'] = df['totalconfirmed'].values.tolist()
     data['totaldeceased'] = df['totaldeceased'].values.tolist()
     data['totalrecovered'] = df['totalrecovered'].values.tolist()
+
     return data
 
 
@@ -187,8 +192,11 @@ def find_soln(fn, param1, param2):
 
 
 def fit_linear_estimator(ts, N_past_days=50):
+    ts['date'] = pd.to_datetime(ts['date'])
     ts.sort_values(by=['date'])
     day_0 = ts.iloc[0].date
+    print(ts.head())
+    print(type(ts.date.tolist()[0]))
     ts['num_days_passed'] = (ts['date'] - day_0).dt.days
 
     last_day = ts.iloc[-1].num_days_passed

@@ -209,6 +209,7 @@ function updateCasesChart(input){
             }];
 
     casesChart.update();
+    console.log("update done");
 
 }
 
@@ -247,6 +248,7 @@ function updateFittedChart(input){
 }
 
 function displayCasesChart(data){
+    console.log("display cases chart");
     if(casesChart == null){
         createCasesChart(data);
     } else{
@@ -276,6 +278,7 @@ function displayFittedCurve(data){
 }
 
 function fetchCasesData(location){
+    console.log("fetching cases " + location);
     $.get("/api/cases/" + location, function(data){
         displayCasesChart(data);
     });
@@ -330,6 +333,7 @@ $('.basicAutoComplete').autoComplete({
 
 //on selection
 $('.basicAutoComplete').on('autocomplete.select', function (evt, item) {
+    console.log("item selected - " + item);
     updatePageOnLocationChange(item);
     selectedLocation = item;
 
