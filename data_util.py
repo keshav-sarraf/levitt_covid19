@@ -208,4 +208,4 @@ def fit_linear_estimator(ts, N_past_days=50):
     result = dict()
     result['df'] = ts
     result['num_days_estimated'] = min(num_days_estimated, 0)
-    # return result
+    return result
