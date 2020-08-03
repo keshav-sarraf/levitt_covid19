@@ -6,6 +6,7 @@ import cachetools.func
 
 # TODO: add clear cache functionality
 # TODO: add active cases
+@cachetools.func.ttl_cache(maxsize=1, ttl=5 * 60 * 60)
 def get_national_ts():
     national_data_raw = requests.get('https://api.covid19india.org/data.json')
     # TODO: depending on response return json or throw error
@@ -70,6 +71,7 @@ def get_state_ts():
     return df
 
 
+@cachetools.func.ttl_cache(maxsize=128, ttl=1 * 60 * 60)
 def get_filtered_location_ts(location_identifier):
     df = get_state_ts()
 
