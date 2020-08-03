@@ -68,6 +68,9 @@ function createCasesChart(input){
                     scaleLabel: {
                         display: true,
                         labelString: 'Value'
+                    },
+                    ticks: {
+                        callback: formatYAxis
                     }
                 }]
             }
@@ -338,5 +341,21 @@ $('.basicAutoComplete').on('autocomplete.select', function (evt, item) {
     $("#numDaysEstimated").html("-");
 });
 
+//convert to lakhs
+function formatYAxis(value) {
+    var ranges = [
+        { divider: 1e7, suffix: 'C' },
+        { divider: 1e5, suffix: 'L' },
+        { divider: 1e3, suffix: 'k' }
+    ];
 
-
+    function formatNumber(n) {
+        for (var i = 0; i < ranges.length; i++) {
+            if (n >= ranges[i].divider) {
+            return (n / ranges[i].divider).toString() + ranges[i].suffix;
+        }
+    }
+    return n;
+ }
+ return formatNumber(value);
+}
