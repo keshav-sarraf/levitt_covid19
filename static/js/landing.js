@@ -183,6 +183,9 @@ function createFittedChart(input){
 }
 
 function updateCasesChart(input){
+
+    casesChart.data.labels = input["dates"];
+
     casesChart.data.datasets = [{
                 label: 'Confirmed',
                 data: input.totalconfirmed,
@@ -214,6 +217,8 @@ function updateCasesChart(input){
 }
 
 function updateLevittChart(input){
+    levittChart.data.labels = input["dates"];
+
     levittChart.data.datasets = [{
                 label: 'Levitt',
                 data: input.levitt_score,
@@ -227,6 +232,9 @@ function updateLevittChart(input){
 }
 
 function updateFittedChart(input){
+
+    fittedChart.data.labels = input["dates"];
+
     fittedChart.data.datasets = [{
                 label: 'Levitt Score',
                 data: input.levitt_score,
