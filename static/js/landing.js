@@ -39,7 +39,16 @@ function createCasesChart(input){
                 borderColor: 'red',
                 borderWidth: 1,
                 fill: false,
-            }]
+            },
+            {
+                label: 'Active',
+                data: Math.max(input.totalconfirmed - input.totalrecovered - input.totaldeceased, 0) ,
+                backgroundColor: 'gray',
+                borderColor: 'gray',
+                borderWidth: 1,
+                fill: false,
+            },
+            ]
         },
         options: {
             responsive: true,
