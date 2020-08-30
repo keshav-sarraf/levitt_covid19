@@ -12,6 +12,10 @@ var fittedCurvectx = document.getElementById('fittedCurveChart').getContext('2d'
 var selectedLocation = "india";
 
 function createCasesChart(input){
+    activeCases = [];
+    for(var i = 0;i<=input.totaldeceased.length-1;i++)
+        activeCases.push(Math.max(0, input.totalconfirmed[i] - input.totalrecovered[i] - input.totaldeceased[i]));
+
     casesChart = new Chart(casesCtx, {
         type: 'line',
         data: {
@@ -42,7 +46,7 @@ function createCasesChart(input){
             },
             {
                 label: 'Active',
-                data: Math.max(input.totalconfirmed - input.totalrecovered - input.totaldeceased, 0) ,
+                data: activeCases,
                 backgroundColor: 'gray',
                 borderColor: 'gray',
                 borderWidth: 1,
