@@ -197,6 +197,10 @@ function createFittedChart(input){
 
 function updateCasesChart(input){
 
+    activeCases = [];
+    for(var i = 0;i<=input.totaldeceased.length-1;i++)
+        activeCases.push(Math.max(0, input.totalconfirmed[i] - input.totalrecovered[i] - input.totaldeceased[i]));
+
     casesChart.data.labels = input["dates"];
 
     casesChart.data.datasets = [{
@@ -220,6 +224,14 @@ function updateCasesChart(input){
                 data: input.totaldeceased,
                 backgroundColor: 'red',
                 borderColor: 'red',
+                borderWidth: 1,
+                fill: false,
+            },
+            {
+                label: 'Active',
+                data: activeCases,
+                backgroundColor: 'gray',
+                borderColor: 'gray',
                 borderWidth: 1,
                 fill: false,
             }];
